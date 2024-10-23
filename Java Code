@@ -1,0 +1,172 @@
+#BST  ins & inor trav
+
+import java.util.Scanner;     class Node {      int data;      Node left, right;
+    public Node(int item) {        data = item;    left = right = null;  }    }
+class BinarySearchTree {      Node root;     BinarySearchTree() {       root = null;    }
+    void insert(int data) {      root = insertRec(root, data);    }
+    Node insertRec(Node root, int data) {    if (root == null) {       root = new Node(data);          return root;   }
+  if (data < root.data)           root.left = insertRec(root.left, data);      
+else if (data > root.data)       root.right = insertRec(root.right, data);   return root;      }    void inorder() {
+      inorderRec(root);    }   void inorderRec(Node root)     {      if (root != null) {      inorderRec(root.left);
+   System.out.print(root.data + " ");         inorderRec(root.right); }   } }        
+public class Main {    public static void main(String[] args) {
+        BinarySearchTree tree = new BinarySearchTree();     Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number of elements to insert in BST:");     int n = sc.nextInt();
+        System.out.println("Enter the elements:");        for (int i = 0; i < n; i++) {
+         tree.insert(sc.nextInt());  }
+        System.out.println("Inorder traversal of the BST:");    tree.inorder(); }    }    
+
+
+#BST ins & post tra 
+
+import java.util.Scanner;     class Node {     int data;      Node left, right;
+    public Node(int item) {       data = item;     left = right = null;     }
+}   class BinarySearchTree {
+    Node root;  BinarySearchTree() {   root = null;
+    }  void insert(int data) {       root = insertRec(root, data);
+ }  Node insertRec(Node root, int data) {
+        if (root == null) {      root = new Node(data);       return root;
+        }   if (data < root.data)         root.left = insertRec(root.left, data);
+        else if (data > root.data)      root.right = insertRec(root.right, data);
+        return root;      }   void postorder() {      postorderRec(root);
+    }     void postorderRec(Node root) {
+        if (root != null) {         postorderRec(root.left);      postorderRec(root.right);
+            System.out.print(root.data + " ");        }    }    }  public class Main {
+    public static void main(String[] args) {     BinarySearchTree tree = new BinarySearchTree();
+        Scanner sc = new Scanner(System.in);     System.out.println("Enter the number of elements to insert in BST:");
+        int n = sc.nextInt();      System.out.println("Enter the elements:");
+        for (int i = 0; i < n; i++) {       tree.insert(sc.nextInt());    }
+        System.out.println("Postorder traversal of the BST:");         tree.postorder(); }   }  
+
+#BST ins & pre trav
+
+import java.util.Scanner;
+class Node {     int data;    Node left, right;
+    public Node(int item) {      data = item;     left = right = null;  }   }  
+class BinarySearchTree {     Node root;
+    BinarySearchTree() {   root = null;
+    }    void insert(int data) {        root = insertRec(root, data);
+    }   Node insertRec(Node root, int data) {
+       if (root == null) {      root = new Node(data);       return root;
+  }        if (data < root.data)           root.left = insertRec(root.left, data);
+    else if (data > root.data)     root.right = insertRec(root.right, data);       return root;   }
+    void preorder() {      preorderRec(root);   }   void preorderRec(Node root) {    if (root != null) {
+        System.out.print(root.data + " ");    preorderRec(root.left);     
+preorderRec(root.right); }  }  }
+public class Main {    public static void main(String[] args) {    BinarySearchTree tree = new BinarySearchTree();
+ Scanner sc = new Scanner(System.in);   System.out.println("Enter the number of elements to insert in BST:");
+  int n = sc.nextInt();     System.out.println("Enter the elements:");
+  for (int i = 0; i < n; i++) {        tree.insert(sc.nextInt());   }
+    System.out.println("Preorder traversal of the BST:");   tree.preorder();   }  }
+
+
+#BST  ins  &  del 
+
+import java.util.Scanner;    class Node {      int data;      Node left, right;
+ public Node(int item) {     data = item;     left = right = null;  }  }   
+class BinarySearchTree {       Node root;       BinarySearchTree() {        root = null;    }
+  void insert(int data)       {       root = insertRec(root, data);   }      Node insertRec(Node root, int data) {
+if (root == null) {        root = new Node(data);    return root;    }
+   if (data < root.data)      root.left = insertRec(root.left, data);
+  else if (data > root.data)      root.right = insertRec(root.right, data);  return root;      }
+    void delete(int data) {       root = deleteRec(root, data);    }
+ Node deleteRec(Node root, int data) {      if (root == null)      return root;    if (data < root.data)       root.left = deleteRec(root.left, data);
+   else if (data > root.data)        root.right = deleteRec(root.right, data);       else {
+   if (root.left == null)      return root.right;   else if (root.right == null)
+        return root.left;      root.data = minValue(root.right);
+   root.right = deleteRec(root.right, root.data);     }    return root;   }
+    int minValue(Node root) {  int minv = root.data;      while (root.left != null) {     minv = root.left.data;
+      root = root.left;   }      return minv;  }
+    void inorder() {      inorderRec(root);   }     void inorderRec(Node root) {     if (root != null) {
+inorderRec(root.left);   System.out.print(root.data + " ");     inorderRec(root.right); }    }   }   
+public class Main {    public static void main(String[] args) {
+   BinarySearchTree tree = new BinarySearchTree();    Scanner sc = new Scanner(System.in);
+System.out.println("Enter the number of elements to insert in BST:");
+int n = sc.nextInt();   System.out.println("Enter the elements:");       for (int i = 0; i < n; i++) {        tree.insert(sc.nextInt());  }
+   System.out.println("Inorder traversal of the BST:");     tree.inorder();
+ System.out.println("\nEnter a value to delete:");     int key = sc.nextInt();    tree.delete(key);   
+System.out.println("Inorder traversal after deletion:");   tree.inorder();  }   }  
+
+
+#Expression tree post exp as inp and print infix Exp 
+
+import java.util.Scanner;   import java.util.Stack;
+class Node {    String value;    Node left, right;
+  Node(String item) {     value = item;
+        left = right = null;      }    }     class ExpressionTree {       Node root;
+ boolean isOperator(String c) {
+        return c.equals("+") || c.equals("-") || c.equals("*") || c.equals("/") || c.equals("^");     }
+    Node constructTree(String postfix[]) {        Stack<Node> stack = new Stack<>();
+        for (String s : postfix) {      if (!isOperator(s)) {        stack.push(new Node(s));
+            } else {        Node t = new Node(s);     t.right = stack.pop();
+                t.left = stack.pop();        stack.push(t);   }  }   return stack.pop();}
+ void inorder(Node node) {     if (node == null)     return;  
+inorder(node.left);      System.out.print(node.value + " ");       inorder(node.right);
+    }       void printInfixExpression(Node root) {       inorder(root);    }    }
+public class Main {     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);       ExpressionTree et = new ExpressionTree();
+        System.out.println("Enter the number of elements in the postfix expression:");        int n = sc.nextInt();
+        String[] postfix = new String[n];      System.out.println("Enter the postfix expression:");
+        for (int i = 0; i < n; i++) {    postfix[i] = sc.next();      }
+   Node root = et.constructTree(postfix);
+        System.out.println("Infix expression:");     et.printInfixExpression(root);   }    }
+
+
+#BST compute CT successful & Unsuccessful search 
+import java.util.Arrays;    import java.util.Scanner;     public class BinarySearch {
+static int binarySearch(int arr[], int key) {       int low = 0, high = arr.length - 1, comparisons = 0;
+while (low <= high) {    comparisons++;    int mid = low + (high - low) / 2;  if (arr[mid] == key) {
+  System.out.println("Successful search with " + comparisons + " comparisons.");  return mid;    }
+            if (arr[mid] < key)       low = mid + 1;    else       high = mid - 1;     }
+        System.out.println("Unsuccessful search with " + comparisons + " comparisons.");      return -1;   }
+    public static void main(String[] args) {     Scanner sc = new Scanner(System.in);
+   System.out.println("Enter the number of elements:");   int n = sc.nextInt();     int[] arr = new int[n];
+ System.out.println("Enter the elements:");  for (int i = 0; i < n; i++) {     arr[i] = sc.nextInt();     }
+   Arrays.sort(arr);     System.out.println("Enter the value to search:");
+        int key = sc.nextInt();   binarySearch(arr, key); }   }  
+
+
+
+#hashing  Func  MId square 
+
+import java.util.Scanner;
+public class HashingMidSquare {      int[] hashTable;    int tableSize;      int collisions;
+HashingMidSquare(int size) {     tableSize = size;     hashTable = new int[tableSize];
+        for (int i = 0; i < tableSize; i++) {     hashTable[i] = -1;      } collisions = 0; }    int hash(int key) {
+int square = key * key;     String squareStr = String.valueOf(square);      int mid = squareStr.length() / 2;
+        return Integer.parseInt(squareStr.substring(mid, mid + 1)) % tableSize;     }
+void insert(int key) {     int index = hash(key);     if (hashTable[index] == -1) {   hashTable[index] = key;   } else {
+   collisions++;     System.out.println("Collision occurred for key " + key + " at index " + index);
+while (hashTable[index] != -1) {       index = (index + 1) % tableSize;    }   hashTable[index] = key; }  }  
+void displayHashTable() {    System.out.println("Hash Table:");
+ for (int i = 0; i < tableSize; i++) {
+   if (hashTable[i] != -1)   System.out.println(i + " --> " + hashTable[i]);    else
+ System.out.println(i + " --> " + "Empty");     }   System.out.println("Total Collisions: " + collisions);     }
+ public static void main(String[] args) {
+  Scanner sc = new Scanner(System.in);    System.out.println("Enter the size of hash table:");   int size = sc.nextInt();
+  HashingMidSquare hash = new HashingMidSquare(size);
+System.out.println("Enter the number of elements:");   int n = sc.nextInt();  System.out.println("Enter the elements:");
+for (int i = 0; i < n; i++) {  int key = sc.nextInt();    hash.insert(key);  }    hash.displayHashTable();    }   ]
+
+
+#hashing  func  Multiplication 
+
+import java.util.Scanner;   public class HashingMultiplication {
+int[] hashTable;   int tableSize;int collisions;    final double A = 0.6180339887;    HashingMultiplication(int
+size) { tableSize = size; hashTable = new int[tableSize]; for (int i = 0; i < tableSize; i++) { hashTable[i] = -1; } 
+collisions = 0; }    int hash(int key) {    double fractionalPart = key * A;
+fractionalPart = fractionalPart - (int) fractionalPart;    return (int) (tableSize * fractionalPart);
+}    void insert(int key) {     int index = hash(key);
+    if (hashTable[index] == -1) {  hashTable[index] = key;      } else {      collisions++;
+System.out.println("Collision occurred for key " + key + " at index " + index);      while (hashTable[index] != -1) {
+   index = (index + 1) % tableSize;   }   hashTable[index] = key;  }
+} void displayHashTable() {    System.out.println("Hash Table:");
+for (int i = 0; i < tableSize; i++) {
+if (hashTable[i] != -1)     System.out.println(i + " --> " + hashTable[i]);     else
+ System.out.println(i + " --> " + "Empty");  }    System.out.println("Total Collisions: " + collisions);   }
+public static void main(String[] args) {     Scanner sc = new Scanner(System.in);     System.out.println("Enter the size of hash table:");
+    int size = sc.nextInt();      HashingMultiplication hash = new HashingMultiplication(size);
+System.out.println("Enter the number of elements:");   int n = sc.nextInt();      System.out.println("Enter the elements:");
+ for (int i = 0; i < n; i++) {     int key = sc.nextInt();     hash.insert(key);   }    hash.displayHashTable(); }    
+
+
