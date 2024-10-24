@@ -24,6 +24,8 @@ void display() {       if (top == -1)
 case 4:     return 0;            default:
                 printf("Invalid choice\n");  }  }  }
 
+algo 
+
 
 
 #Parenthesis Matching using Stacks
@@ -410,3 +412,961 @@ int main() {     int choice, value;
             case 3:          display();         break;
             case 4:       return 0;        default:
                 printf("Invalid choice\n");  }   }   }  
+
+
+
+#BST  ins & inor trav
+
+import java.util.Scanner;     class Node {      int data;      Node left, right;
+    public Node(int item) {        data = item;    left = right = null;  }    }
+class BinarySearchTree {      Node root;     BinarySearchTree() {       root = null;    }
+    void insert(int data) {      root = insertRec(root, data);    }
+    Node insertRec(Node root, int data) {    if (root == null) {       root = new Node(data);          return root;   }
+  if (data < root.data)           root.left = insertRec(root.left, data);      
+else if (data > root.data)       root.right = insertRec(root.right, data);   return root;      }    void inorder() {
+      inorderRec(root);    }   void inorderRec(Node root)     {      if (root != null) {      inorderRec(root.left);
+   System.out.print(root.data + " ");         inorderRec(root.right); }   } }        
+public class Main {    public static void main(String[] args) {
+        BinarySearchTree tree = new BinarySearchTree();     Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number of elements to insert in BST:");     int n = sc.nextInt();
+        System.out.println("Enter the elements:");        for (int i = 0; i < n; i++) {
+         tree.insert(sc.nextInt());  }
+        System.out.println("Inorder traversal of the BST:");    tree.inorder(); }    }    
+
+
+#BST ins & post tra 
+
+import java.util.Scanner;     class Node {     int data;      Node left, right;
+    public Node(int item) {       data = item;     left = right = null;     }
+}   class BinarySearchTree {
+    Node root;  BinarySearchTree() {   root = null;
+    }  void insert(int data) {       root = insertRec(root, data);
+ }  Node insertRec(Node root, int data) {
+        if (root == null) {      root = new Node(data);       return root;
+        }   if (data < root.data)         root.left = insertRec(root.left, data);
+        else if (data > root.data)      root.right = insertRec(root.right, data);
+        return root;      }   void postorder() {      postorderRec(root);
+    }     void postorderRec(Node root) {
+        if (root != null) {         postorderRec(root.left);      postorderRec(root.right);
+            System.out.print(root.data + " ");        }    }    }  public class Main {
+    public static void main(String[] args) {     BinarySearchTree tree = new BinarySearchTree();
+        Scanner sc = new Scanner(System.in);     System.out.println("Enter the number of elements to insert in BST:");
+        int n = sc.nextInt();      System.out.println("Enter the elements:");
+        for (int i = 0; i < n; i++) {       tree.insert(sc.nextInt());    }
+        System.out.println("Postorder traversal of the BST:");         tree.postorder(); }   }  
+
+#BST ins & pre trav
+
+import java.util.Scanner;
+class Node {     int data;    Node left, right;
+    public Node(int item) {      data = item;     left = right = null;  }   }  
+class BinarySearchTree {     Node root;
+    BinarySearchTree() {   root = null;
+    }    void insert(int data) {        root = insertRec(root, data);
+    }   Node insertRec(Node root, int data) {
+       if (root == null) {      root = new Node(data);       return root;
+  }        if (data < root.data)           root.left = insertRec(root.left, data);
+    else if (data > root.data)     root.right = insertRec(root.right, data);       return root;   }
+    void preorder() {      preorderRec(root);   }   void preorderRec(Node root) {    if (root != null) {
+        System.out.print(root.data + " ");    preorderRec(root.left);     
+preorderRec(root.right); }  }  }
+public class Main {    public static void main(String[] args) {    BinarySearchTree tree = new BinarySearchTree();
+ Scanner sc = new Scanner(System.in);   System.out.println("Enter the number of elements to insert in BST:");
+  int n = sc.nextInt();     System.out.println("Enter the elements:");
+  for (int i = 0; i < n; i++) {        tree.insert(sc.nextInt());   }
+    System.out.println("Preorder traversal of the BST:");   tree.preorder();   }  }
+
+
+#BST  ins  &  del 
+
+import java.util.Scanner;    class Node {      int data;      Node left, right;
+ public Node(int item) {     data = item;     left = right = null;  }  }   
+class BinarySearchTree {       Node root;       BinarySearchTree() {        root = null;    }
+  void insert(int data)       {       root = insertRec(root, data);   }      Node insertRec(Node root, int data) {
+if (root == null) {        root = new Node(data);    return root;    }
+   if (data < root.data)      root.left = insertRec(root.left, data);
+  else if (data > root.data)      root.right = insertRec(root.right, data);  return root;      }
+    void delete(int data) {       root = deleteRec(root, data);    }
+ Node deleteRec(Node root, int data) {      if (root == null)      return root;    if (data < root.data)       root.left = deleteRec(root.left, data);
+   else if (data > root.data)        root.right = deleteRec(root.right, data);       else {
+   if (root.left == null)      return root.right;   else if (root.right == null)
+        return root.left;      root.data = minValue(root.right);
+   root.right = deleteRec(root.right, root.data);     }    return root;   }
+    int minValue(Node root) {  int minv = root.data;      while (root.left != null) {     minv = root.left.data;
+      root = root.left;   }      return minv;  }
+    void inorder() {      inorderRec(root);   }     void inorderRec(Node root) {     if (root != null) {
+inorderRec(root.left);   System.out.print(root.data + " ");     inorderRec(root.right); }    }   }   
+public class Main {    public static void main(String[] args) {
+   BinarySearchTree tree = new BinarySearchTree();    Scanner sc = new Scanner(System.in);
+System.out.println("Enter the number of elements to insert in BST:");
+int n = sc.nextInt();   System.out.println("Enter the elements:");       for (int i = 0; i < n; i++) {        tree.insert(sc.nextInt());  }
+   System.out.println("Inorder traversal of the BST:");     tree.inorder();
+ System.out.println("\nEnter a value to delete:");     int key = sc.nextInt();    tree.delete(key);   
+System.out.println("Inorder traversal after deletion:");   tree.inorder();  }   }  
+
+
+#Expression tree post exp as inp and print infix Exp 
+
+import java.util.Scanner;   import java.util.Stack;
+class Node {    String value;    Node left, right;
+  Node(String item) {     value = item;
+        left = right = null;      }    }     class ExpressionTree {       Node root;
+ boolean isOperator(String c) {
+        return c.equals("+") || c.equals("-") || c.equals("*") || c.equals("/") || c.equals("^");     }
+    Node constructTree(String postfix[]) {        Stack<Node> stack = new Stack<>();
+        for (String s : postfix) {      if (!isOperator(s)) {        stack.push(new Node(s));
+            } else {        Node t = new Node(s);     t.right = stack.pop();
+                t.left = stack.pop();        stack.push(t);   }  }   return stack.pop();}
+ void inorder(Node node) {     if (node == null)     return;  
+inorder(node.left);      System.out.print(node.value + " ");       inorder(node.right);
+    }       void printInfixExpression(Node root) {       inorder(root);    }    }
+public class Main {     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);       ExpressionTree et = new ExpressionTree();
+        System.out.println("Enter the number of elements in the postfix expression:");        int n = sc.nextInt();
+        String[] postfix = new String[n];      System.out.println("Enter the postfix expression:");
+        for (int i = 0; i < n; i++) {    postfix[i] = sc.next();      }
+   Node root = et.constructTree(postfix);
+        System.out.println("Infix expression:");     et.printInfixExpression(root);   }    }
+
+
+#BST compute CT successful & Unsuccessful search 
+import java.util.Arrays;    import java.util.Scanner;     public class BinarySearch {
+static int binarySearch(int arr[], int key) {       int low = 0, high = arr.length - 1, comparisons = 0;
+while (low <= high) {    comparisons++;    int mid = low + (high - low) / 2;  if (arr[mid] == key) {
+  System.out.println("Successful search with " + comparisons + " comparisons.");  return mid;    }
+            if (arr[mid] < key)       low = mid + 1;    else       high = mid - 1;     }
+        System.out.println("Unsuccessful search with " + comparisons + " comparisons.");      return -1;   }
+    public static void main(String[] args) {     Scanner sc = new Scanner(System.in);
+   System.out.println("Enter the number of elements:");   int n = sc.nextInt();     int[] arr = new int[n];
+ System.out.println("Enter the elements:");  for (int i = 0; i < n; i++) {     arr[i] = sc.nextInt();     }
+   Arrays.sort(arr);     System.out.println("Enter the value to search:");
+        int key = sc.nextInt();   binarySearch(arr, key); }   }  
+
+
+
+#hashing  Func  MId square 
+
+import java.util.Scanner;
+public class HashingMidSquare {      int[] hashTable;    int tableSize;      int collisions;
+HashingMidSquare(int size) {     tableSize = size;     hashTable = new int[tableSize];
+        for (int i = 0; i < tableSize; i++) {     hashTable[i] = -1;      } collisions = 0; }    int hash(int key) {
+int square = key * key;     String squareStr = String.valueOf(square);      int mid = squareStr.length() / 2;
+        return Integer.parseInt(squareStr.substring(mid, mid + 1)) % tableSize;     }
+void insert(int key) {     int index = hash(key);     if (hashTable[index] == -1) {   hashTable[index] = key;   } else {
+   collisions++;     System.out.println("Collision occurred for key " + key + " at index " + index);
+while (hashTable[index] != -1) {       index = (index + 1) % tableSize;    }   hashTable[index] = key; }  }  
+void displayHashTable() {    System.out.println("Hash Table:");
+ for (int i = 0; i < tableSize; i++) {
+   if (hashTable[i] != -1)   System.out.println(i + " --> " + hashTable[i]);    else
+ System.out.println(i + " --> " + "Empty");     }   System.out.println("Total Collisions: " + collisions);     }
+ public static void main(String[] args) {
+  Scanner sc = new Scanner(System.in);    System.out.println("Enter the size of hash table:");   int size = sc.nextInt();
+  HashingMidSquare hash = new HashingMidSquare(size);
+System.out.println("Enter the number of elements:");   int n = sc.nextInt();  System.out.println("Enter the elements:");
+for (int i = 0; i < n; i++) {  int key = sc.nextInt();    hash.insert(key);  }    hash.displayHashTable();    }   ]
+
+
+#hashing  func  Multiplication 
+
+import java.util.Scanner;   public class HashingMultiplication {
+int[] hashTable;   int tableSize;int collisions;    final double A = 0.6180339887;    HashingMultiplication(int
+size) { tableSize = size; hashTable = new int[tableSize]; for (int i = 0; i < tableSize; i++) { hashTable[i] = -1; } 
+collisions = 0; }    int hash(int key) {    double fractionalPart = key * A;
+fractionalPart = fractionalPart - (int) fractionalPart;    return (int) (tableSize * fractionalPart);
+}    void insert(int key) {     int index = hash(key);
+    if (hashTable[index] == -1) {  hashTable[index] = key;      } else {      collisions++;
+System.out.println("Collision occurred for key " + key + " at index " + index);      while (hashTable[index] != -1) {
+   index = (index + 1) % tableSize;   }   hashTable[index] = key;  }
+} void displayHashTable() {    System.out.println("Hash Table:");
+for (int i = 0; i < tableSize; i++) {
+if (hashTable[i] != -1)     System.out.println(i + " --> " + hashTable[i]);     else
+ System.out.println(i + " --> " + "Empty");  }    System.out.println("Total Collisions: " + collisions);   }
+public static void main(String[] args) {     Scanner sc = new Scanner(System.in);     System.out.println("Enter the size of hash table:");
+    int size = sc.nextInt();      HashingMultiplication hash = new HashingMultiplication(size);
+System.out.println("Enter the number of elements:");   int n = sc.nextInt();      System.out.println("Enter the elements:");
+ for (int i = 0; i < n; i++) {     int key = sc.nextInt();     hash.insert(key);   }    hash.displayHashTable(); }    
+
+
+
+# Selection Sort and Count the Number of Comparisons and Swaps** 
+
+import java.util.Scanner;      public class SelectionSort {    public static void selectionSort(int[] arr) {
+  int n = arr.length;  int comparisons = 0, swaps = 0;   for (int i = 0; i < n - 1; i++) {
+  int minIndex = i;  for (int j = i + 1; j < n; j++) { comparisons++;
+  if (arr[j] < arr[minIndex]) {         minIndex = j;
+    }     }   if (minIndex != i) {      swaps++;        int temp = arr[minIndex];
+   arr[minIndex] = arr[i];  arr[i] = temp;   }   }     System.out.println("Sorted Array: ");
+for (int num : arr) {    System.out.print(num + " ");
+ }  System.out.println("\nTotal Comparisons: " + comparisons);    System.out.println("Total Swaps: " + swaps);     }
+public static void main(String[] args) {   Scanner sc = new Scanner(System.in);
+ System.out.println("Enter the number of elements:");     int n = sc.nextInt();      int[] arr = new int[n];
+  System.out.println("Enter the elements:");     for (int i = 0; i < n; i++) {        arr[i] = sc.nextInt();
+ }     selectionSort(arr);    }   }   
+
+
+#insertion 
+
+import java.util.Scanner;  public class InsertionSort {
+ public static void insertionSort(int[] arr) {    int n = arr.length;     int comparisons = 0, swaps = 0;  
+ for (int i = 1; i < n; ++i) {    int key = arr[i];     int j = i - 1;
+  while (j >= 0 && arr[j] > key) { comparisons++;   arr[j + 1] = arr[j];    swaps++;   j = j - 1;   }    arr[j + 1] = key;    }
+  System.out.println("Sorted Array: ");    for (int num : arr) {      System.out.print(num + " ");     }
+ System.out.println("\nTotal Comparisons: " + comparisons);   System.out.println("Total Swaps: " + swaps);    }
+ public static void main(String[] args) {    Scanner sc = new Scanner(System.in);     System.out.println("Enter the number of elements:");
+  int n = sc.nextInt();      int[] arr = new int[n];     System.out.println("Enter the elements:");
+ for (int i = 0; i < n; i++) {   arr[i] = sc.nextInt();   }    insertionSort(arr);  }   }   
+
+
+#merge 
+
+import java.util.Scanner;  public class MergeSort { 
+static int comparisons = 0, swaps = 0;     public static void merge(int arr[], int left, int mid, int right) {
+ int n1 = mid - left + 1;  int n2 = right - mid;     int[] L = new int[n1];    int[] R = new int[n2];
+   for (int i = 0; i < n1; ++i)     L[i] = arr[left + i];    for (int j = 0; j < n2; ++j)     R[j] = arr[mid + 1 + j];
+ int i = 0, j = 0;    int k = left;   while (i < n1 && j < n2) {    comparisons++;
+  if (L[i] <= R[j]) {   arr[k] = L[i];    i++; } else {     arr[k] = R[j];
+swaps++;    j++;    }    k++;    }    while (i < n1) {    arr[k] = L[i];     i++;     k++; }
+while (j < n2) {     arr[k] = R[j];      j++;       k++;    }   }
+ public static void mergeSort(int arr[], int left, int right) {     if (left < right) {    int mid = (left + right) / 2;
+ mergeSort(arr, left, mid);     mergeSort(arr, mid + 1, right);     merge(arr, left, mid, right);  } }
+ public static void main(String[] args) { Scanner sc = new Scanner(System.in);      System.out.println("Enter the number of elements:");
+int n = sc.nextInt();   int[] arr = new int[n];  System.out.println("Enter the elements:");
+for (int i = 0; i < n; i++) {     arr[i] = sc.nextInt();    }     mergeSort(arr, 0, n - 1);   System.out.println("Sorted Array:");
+for (int num : arr) {    System.out.print(num + " "); }
+System.out.println("\nTotal Comparisons: " + comparisons);     System.out.println("Total Swaps: " + swaps); }   }   
+
+
+
+# Quick 
+
+import java.util.Scanner;     public class QuickSort {
+static int comparisons = 0, swaps = 0;      public static void quickSort(int arr[], int low, int high) {
+ if (low < high) {     int pi = partition(arr, low, high);
+  quickSort(arr, low, pi - 1);      quickSort(arr, pi + 1, high);    }    }    public static int partition(int arr[], int low, int high) {
+ int pivot = arr[high];      int i = (low - 1);       for (int j = low; j < high; j++) {     comparisons++;
+ if (arr[j] < pivot) {     i++;      int temp = arr[i];     arr[i] = arr[j];    arr[j] = temp;     swaps++;     }     }
+ int temp = arr[i + 1];     arr[i + 1] = arr[high];    arr[high] = temp;      swaps++;    return i + 1;    }
+public static void main(String[] args) {      Scanner sc = new Scanner(System.in);
+ System.out.println("Enter the number of elements:");      int n = sc.nextInt();
+ int[] arr = new int[n];      System.out.println("Enter the elements:");    for (int i = 0; i < n; i++) {   arr[i] = sc.nextInt();
+  }    quickSort(arr, 0, n - 1);       System.out.println("Sorted Array:");
+for (int num : arr) {     System.out.print(num + " ");     }    System.out.println("\nTotal Comparisons: " + comparisons);
+ System.out.println("Total Swaps: " + swaps);    }   }  
+
+
+#heap sort
+import java.util.Scanner;     public class HeapSort {
+ static int comparisons = 0, swaps = 0;  public static void heapSort(int arr[]) {      int n = arr.length;
+  for (int i = n / 2 - 1; i >= 0; i--)       heapify(arr, n, i);
+ for (int i = n - 1; i > 0; i--) {     int temp = arr[0];
+ arr[0] = arr[i];      arr[i] = temp;       swaps++;    heapify(arr, i, 0);    }      }
+public static void heapify(int arr[], int n, int i) {
+ int largest = i;     int left = 2 * i + 1;     int right = 2 * i + 2;
+if (left < n) {   comparisons++;     if (arr[left] > arr[largest])        
+largest = left;   }                     if (right < n) {     comparisons++;
+if (arr[right] > arr[largest])     largest = right;    }     if (largest != i) {
+ int swap = arr[i];  arr[i] = arr[largest];     arr[largest] = swap;     swaps++;    heapify(arr, n, largest);  }    }   
+ public static void main(String[] args) {     Scanner sc = new Scanner(System.in);
+ System.out.println("Enter the number of elements:");     int n = sc.nextInt();     int[] arr = new int[n];
+  System.out.println("Enter the elements:");    for (int i = 0; i < n; i++) {     arr[i] = sc.nextInt();     }    heapSort(arr);
+ System.out.println("Sorted Array:");   for (int num : arr) {    System.out.print(num + " ");    }
+ System.out.println("\nTotal Comparisons: " + comparisons);      System.out.println("Total Swaps: " + swaps);  }   }
+
+
+#Bucket 
+
+import java.util.ArrayList;      import java.util.Collections;         import java.util.Scanner;
+public class BucketSort {      static int comparisons = 0, swaps = 0;           public static void bucketSort(float[] arr, int n) {
+ ArrayList<Float>[] buckets = new ArrayList[n];      for (int i = 0; i < n; i++) {    buckets[i] = new ArrayList<>();   }
+ for (int i = 0; i < n; i++) {        int bucketIndex = (int) arr[i] * n;     buckets[bucketIndex].add(arr[i]);     }
+ for (int i = 0; i < n; i++) {  Collections.sort(buckets[i]);      }        int index = 0;
+ for (int i = 0; i < n; i++) {      for (float value : buckets[i]) {     arr[index++] = value;   }  }   }  
+public static void main(String[] args) {       Scanner sc = new Scanner(System.in);
+ System.out.println("Enter the number of elements:");     int n = sc.nextInt();
+ float[] arr = new float[n];    System.out.println("Enter the elements (as floats between 0 and 1):");  
+for (int i = 0; i < n; i++) {     arr[i] = sc.nextFloat();       }    bucketSort(arr, n);
+ System.out.println("Sorted Array:");     for (float num : arr) {      System.out.print(num + " ");     }
+System.out.println("\nNote: Bucket Sort is less focused on comparisons and swaps, but involves distributing and sorting in sub-buckets.");   }    }
+
+Here are the algorithms for each of the programs (1 to 30):
+
+---
+
+### **1. Stack using Arrays and demonstrate Overflow & Underflow conditions**
+
+**Algorithm:**
+1. Initialize an empty array `stack[]` and set `top = -1`.
+2. For **Push** operation:
+   - If `top == size - 1`, display "Stack Overflow".
+   - Else, increment `top` and insert the element at `stack[top]`.
+3. For **Pop** operation:
+   - If `top == -1`, display "Stack Underflow".
+   - Else, display the popped element and decrement `top`.
+4. For **Peek** operation:
+   - If `top == -1`, display "Stack is Empty".
+   - Else, display the top element.
+5. For **Display** operation:
+   - If `top == -1`, display "Stack is Empty".
+   - Else, display all elements from `stack[0]` to `stack[top]`.
+6. Exit the program.
+
+### **2. Parenthesis Matching using Stacks**
+
+**Algorithm:**
+1. **Initialize Stack:**
+   - Create an empty stack `stack[]` to store opening parentheses.
+   - Set a flag `isBalanced` to true, which will help in determining if the parentheses are balanced.
+
+2. **Input Expression:**
+   - Read the input expression from the user as a string.
+
+3. **Traverse the Expression:**
+   - Loop through each character in the expression:
+     - If the character is an opening parenthesis (`(`, `{`, `[`), push it onto the stack.
+     - If the character is a closing parenthesis (`)`, `}`, `]`):
+       - Check if the stack is empty (Underflow Condition):
+         - If the stack is empty, set `isBalanced` to false (indicating a mismatch) and break the loop.
+       - If the stack is not empty:
+         - Pop the top element from the stack.
+         - Check if the popped element matches the closing parenthesis (i.e., `(` matches `)`, `{` matches `}`, `[` matches `]`).
+         - If it does not match, set `isBalanced` to false and break the loop.
+
+4. **Final Check:**
+   - After the loop completes, if `isBalanced` is still true and the stack is empty, print "Parentheses are balanced."
+   - If the stack is not empty or `isBalanced` is false, print "Parentheses are not balanced."
+
+---
+
+### **3. Conversion of Infix Expression to Postfix Expression using Stacks**
+
+**Algorithm:**
+1. **Initialize Stack:**
+   - Create an empty stack `stack[]` to store operators and parentheses during the conversion process.
+   - Initialize an empty string `postfix` to store the final postfix expression.
+
+2. **Input Infix Expression:**
+   - Read the input infix expression from the user.
+
+3. **Traverse the Infix Expression:**
+   - Loop through each character in the infix expression:
+     - If the character is an operand (number or variable), append it to the `postfix` string.
+     - If the character is an opening parenthesis (`(`), push it onto the stack.
+     - If the character is a closing parenthesis (`)`):
+       - Pop elements from the stack and append them to the `postfix` string until an opening parenthesis is found.
+       - Remove the opening parenthesis from the stack.
+     - If the character is an operator:
+       - While the stack is not empty and the precedence of the operator at the top of the stack is greater than or equal to the current operator, pop the operator from the stack and append it to the `postfix` string.
+       - Push the current operator onto the stack.
+
+4. **After Traversal:**
+   - After the entire expression has been traversed, pop any remaining operators from the stack and append them to the `postfix` string.
+
+5. **Display the Postfix Expression:**
+   - Print the final postfix expression.
+
+---
+
+### **4. Postfix Expression Evaluation using Stacks**
+
+**Algorithm:**
+1. **Initialize Stack:**
+   - Create an empty stack `stack[]` to store operands during the evaluation.
+
+2. **Input Postfix Expression:**
+   - Read the input postfix expression from the user.
+
+3. **Traverse the Postfix Expression:**
+   - Loop through each character in the postfix expression:
+     - If the character is an operand, push it onto the stack.
+     - If the character is an operator:
+       - Pop the top two elements from the stack.
+       - Apply the operator to these two elements (second operand popped is the left operand, and first operand popped is the right operand).
+       - Push the result of the operation back onto the stack.
+
+4. **Final Result:**
+   - After the entire expression has been traversed, the result of the postfix evaluation will be the only element left in the stack.
+
+5. **Display the Result:**
+   - Print the result of the postfix expression.
+
+---
+
+### **5. Linear Queue using Arrays and demonstrate Overflow & Underflow conditions**
+
+**Algorithm:**
+1. **Initialize Queue:**
+   - Define an array `queue[]` of size `MAX` to store queue elements.
+   - Initialize two pointers `front = -1` and `rear = -1` to represent the front and rear of the queue.
+
+2. **Enqueue Operation (Insert an Element into the Queue):**
+   - Check if the queue is full (Overflow Condition):
+     - If `rear == MAX - 1`, print "Queue Overflow" and terminate the operation.
+   - If the queue is not full:
+     - If `front == -1`, set `front = 0` (indicating that the queue is no longer empty).
+     - Increment `rear` by 1 and insert the new element at `queue[rear]`.
+     - Print a message indicating that the element has been added to the queue.
+
+3. **Dequeue Operation (Remove an Element from the Queue):**
+   - Check if the queue is empty (Underflow Condition):
+     - If `front == -1`, print "Queue Underflow" and terminate the operation.
+   - If the queue is not empty:
+     - Retrieve the element from `queue[front]`.
+     - If `front == rear`, set both `front` and `rear` to -1 (indicating the queue is now empty).
+     - Otherwise, increment `front` by 1.
+     - Print a message indicating that the element has been removed from the queue.
+
+4. **Display the Queue:**
+   - If the queue is empty, print "Queue is empty."
+   - Otherwise, traverse the array from `front` to `rear`, printing each element in the queue. 
+
+### **6. Circular Queue using Arrays and demonstrate Overflow & Underflow conditions**
+
+**Algorithm:**
+
+1. **Initialize Circular Queue:**
+   - Define an array `queue[]` of size `MAX` to store the queue elements.
+   - Initialize two pointers, `front` and `rear`, both set to `-1`, indicating that the queue is initially empty.
+
+2. **Enqueue Operation (Insert an Element into the Circular Queue):**
+   - Check if the queue is full (Overflow Condition):
+     - The queue is full if `(rear + 1) % MAX == front`.
+     - If full, print "Queue Overflow" and terminate the operation.
+   - If the queue is not full:
+     - If `front == -1`, set `front = 0` (indicating that the queue is no longer empty).
+     - Increment `rear` by setting `rear = (rear + 1) % MAX`.
+     - Insert the new element at `queue[rear]`.
+     - Print a message indicating that the element has been added to the queue.
+
+3. **Dequeue Operation (Remove an Element from the Circular Queue):**
+   - Check if the queue is empty (Underflow Condition):
+     - If `front == -1`, print "Queue Underflow" and terminate the operation.
+   - If the queue is not empty:
+     - Retrieve the element from `queue[front]`.
+     - If `front == rear`, set both `front` and `rear` to `-1` (indicating the queue is now empty).
+     - Otherwise, increment `front` by setting `front = (front + 1) % MAX`.
+     - Print a message indicating that the element has been removed from the queue.
+
+4. **Display the Circular Queue:**
+   - If the queue is empty, print "Queue is empty."
+   - If the queue is not empty, traverse from `front` to `rear` using the circular logic (`(i + 1) % MAX`), printing each element.
+
+---
+
+### **7. Double-ended Queue (Deque) using Arrays**
+
+**Algorithm:**
+
+1. **Initialize Deque:**
+   - Define an array `deque[]` of size `MAX`.
+   - Initialize two pointers, `front` and `rear`, both set to `-1`.
+
+2. **Insert an Element at the Front (PushFront):**
+   - Check if the deque is full:
+     - The deque is full if `(front == 0 && rear == MAX - 1)` or `(front == rear + 1)`.
+     - If full, print "Deque Overflow."
+   - If the deque is not full:
+     - If `front == -1`, set both `front` and `rear` to 0 (for the first element).
+     - If `front == 0`, set `front = MAX - 1`.
+     - Otherwise, decrement `front` by 1.
+     - Insert the element at `deque[front]`.
+
+3. **Insert an Element at the Rear (PushRear):**
+   - Check if the deque is full (similar to PushFront).
+   - If not full:
+     - If `front == -1`, set both `front` and `rear` to 0.
+     - Increment `rear` using `rear = (rear + 1) % MAX`.
+     - Insert the element at `deque[rear]`.
+
+4. **Remove an Element from the Front (PopFront):**
+   - Check if the deque is empty (Underflow Condition):
+     - If `front == -1`, print "Deque Underflow."
+   - If not empty:
+     - Retrieve the element from `deque[front]`.
+     - If `front == rear`, set both `front` and `rear` to `-1`.
+     - Otherwise, increment `front = (front + 1) % MAX`.
+
+5. **Remove an Element from the Rear (PopRear):**
+   - Check if the deque is empty.
+   - If not empty:
+     - Retrieve the element from `deque[rear]`.
+     - If `front == rear`, set both `front` and `rear` to `-1`.
+     - Otherwise, decrement `rear = (rear == 0) ? MAX - 1 : rear - 1`.
+
+6. **Display the Deque:**
+   - If empty, print "Deque is empty."
+   - Otherwise, traverse from `front` to `rear` using circular logic.
+
+---
+
+### **8. Queue using Linked List**
+
+**Algorithm:**
+
+1. **Initialize Queue:**
+   - Define a structure for `Node`, containing an integer `data` and a pointer `next` to the next node.
+   - Define two pointers, `front` and `rear`, both initialized to `NULL`.
+
+2. **Enqueue Operation (Insert an Element into the Queue):**
+   - Create a new node `temp` with the given data and `next` set to `NULL`.
+   - If `rear == NULL` (queue is empty), set both `front` and `rear` to `temp`.
+   - If the queue is not empty, set `rear->next` to `temp` and update `rear = temp`.
+
+3. **Dequeue Operation (Remove an Element from the Queue):**
+   - Check if the queue is empty (Underflow Condition):
+     - If `front == NULL`, print "Queue Underflow."
+   - If the queue is not empty:
+     - Retrieve the element from `front->data`.
+     - Move the `front` pointer to `front->next`.
+     - If `front == NULL`, set `rear = NULL` (queue is now empty).
+
+4. **Display the Queue:**
+   - If the queue is empty, print "Queue is empty."
+   - If the queue is not empty, traverse the linked list from `front` to `rear`, printing each node's data.
+
+---
+
+### **9. Stack using Linked List**
+
+**Algorithm:**
+
+1. **Initialize Stack:**
+   - Define a structure `Node` containing `data` and a pointer `next`.
+   - Initialize a pointer `top` to `NULL`.
+
+2. **Push Operation (Insert an Element into the Stack):**
+   - Create a new node `temp` and set its `data` to the value provided by the user.
+   - Set `temp->next = top`.
+   - Update `top = temp`.
+   - Print a message indicating that the element has been pushed onto the stack.
+
+3. **Pop Operation (Remove an Element from the Stack):**
+   - Check if the stack is empty (Underflow Condition):
+     - If `top == NULL`, print "Stack Underflow."
+   - If not empty:
+     - Retrieve the data from `top->data`.
+     - Move `top` to `top->next`.
+     - Print the popped element.
+
+4. **Display the Stack:**
+   - If `top == NULL`, print "Stack is empty."
+   - Traverse the stack from `top` downwards, printing each element's data.
+
+---
+
+### **10. Evaluation of Postfix Expression using Linked List**
+
+**Algorithm:**
+
+1. **Initialize Stack:**
+   - Use a linked list to represent a stack. Each node contains `data` and `next`.
+
+2. **Input Postfix Expression:**
+   - Read the postfix expression from the user.
+
+3. **Traverse the Postfix Expression:**
+   - For each character in the expression:
+     - If it's an operand, push it onto the stack.
+     - If it's an operator, pop the top two elements from the stack.
+     - Apply the operator to these two operands and push the result back onto the stack.
+
+4. **Result:**
+   - After processing the expression, the result will be the last remaining value on the stack.
+
+### **11. Circular Linked List Implementation**
+
+**Algorithm:**
+
+1. **Initialize Circular Linked List:**
+   - Define a `Node` structure with `data` and `next` pointer.
+   - Initialize a pointer `last` to `NULL`.
+
+2. **Insert at the Beginning:**
+   - Create a new node `temp` with the given data.
+   - If the list is empty (i.e., `last == NULL`):
+     - Set `temp->next = temp` and update `last = temp`.
+   - If the list is not empty:
+     - Set `temp->next = last->next` and update `last->next = temp`.
+
+3. **Insert at the End:**
+   - Create a new node `temp` with the given data.
+   - If the list is empty:
+     - Set `temp->next = temp` and update `last = temp`.
+   - If the list is not empty:
+     - Set `temp->next = last->next` and update `last->next = temp`, then update `last = temp`.
+
+4. **Delete the First Node:**
+   - Check if the list is empty (i.e., `last == NULL`).
+     - If it is, print "List is empty."
+   - If there is only one node (i.e., `last == last->next`), delete the node and set `last = NULL`.
+   - If there are multiple nodes:
+     - Set `last->next = last->next->next` (removing the first node).
+
+5. **Display the Circular Linked List:**
+   - If the list is empty, print "List is empty."
+   - Otherwise, traverse the list starting from `last->next` (the first node) and keep printing nodes until the first node is reached again.
+
+---
+
+### **12. Doubly Linked List Implementation**
+
+**Algorithm:**
+
+1. **Initialize Doubly Linked List:**
+   - Define a `Node` structure with `data`, `next`, and `prev` pointers.
+   - Initialize a pointer `head` to `NULL`.
+
+2. **Insert at the Beginning:**
+   - Create a new node `temp` with the given data.
+   - Set `temp->next = head` and `temp->prev = NULL`.
+   - If `head != NULL`, update `head->prev = temp`.
+   - Set `head = temp`.
+
+3. **Insert at the End:**
+   - Create a new node `temp` with the given data.
+   - If the list is empty, set `temp->prev = NULL` and `head = temp`.
+   - Otherwise, traverse to the last node and set its `next = temp`.
+   - Set `temp->prev = last` and `temp->next = NULL`.
+
+4. **Delete a Node:**
+   - If the list is empty, print "List is empty."
+   - If the node to be deleted is the `head`, update `head = head->next` and set `head->prev = NULL`.
+   - If the node is in the middle or end, update the `prev->next` and `next->prev` pointers of adjacent nodes.
+
+5. **Display the Doubly Linked List:**
+   - Traverse the list from `head`, printing the `data` of each node until the end is reached.
+
+---
+
+### **13. Binary Tree Traversals (Inorder, Preorder, Postorder)**
+
+**Algorithm:**
+
+1. **Initialize Binary Tree:**
+   - Define a `Node` structure with `data`, `left`, and `right` pointers.
+   - Initialize the root node to `NULL`.
+
+2. **Inorder Traversal:**
+   - Start at the root node.
+   - Recursively traverse the left subtree.
+   - Print the data of the current node.
+   - Recursively traverse the right subtree.
+
+3. **Preorder Traversal:**
+   - Start at the root node.
+   - Print the data of the current node.
+   - Recursively traverse the left subtree.
+   - Recursively traverse the right subtree.
+
+4. **Postorder Traversal:**
+   - Start at the root node.
+   - Recursively traverse the left subtree.
+   - Recursively traverse the right subtree.
+   - Print the data of the current node.
+
+---
+
+### **14. Binary Search Tree (BST) Insertion and Search**
+
+**Algorithm:**
+
+1. **Initialize BST:**
+   - Define a `Node` structure with `data`, `left`, and `right` pointers.
+   - Initialize the root node to `NULL`.
+
+2. **Insertion in BST:**
+   - If the tree is empty, create a new node as the root.
+   - Otherwise, compare the data with the current node:
+     - If the data is smaller, move to the left subtree.
+     - If the data is larger, move to the right subtree.
+   - Recursively insert the node at the correct position.
+
+3. **Search in BST:**
+   - Start at the root node.
+   - If the node is `NULL`, return "Element not found."
+   - Compare the data with the current node:
+     - If it matches, return "Element found."
+     - If it is smaller, search in the left subtree.
+     - If it is larger, search in the right subtree.
+
+---
+
+### **15. Heap Sort**
+
+**Algorithm:**
+
+1. **Build a Max Heap:**
+   - Start from the last non-leaf node and move upwards.
+   - For each node, compare it with its children and swap if necessary to maintain the max-heap property.
+
+2. **Heapify:**
+   - Starting at the root, compare the node with its children.
+   - If the root is smaller than its largest child, swap them and recursively heapify the subtree.
+
+3. **Heap Sort:**
+   - After building the max heap, swap the root element with the last element of the heap.
+   - Reduce the size of the heap by 1.
+   - Heapify the root to maintain the max-heap property.
+   - Repeat the process until the heap size is 1.
+
+---
+
+### **16. Merge Sort**
+
+**Algorithm:**
+
+1. **Divide the Array:**
+   - Recursively divide the array into two halves until each subarray contains only one element.
+
+2. **Merge the Arrays:**
+   - Compare the elements of the two halves and merge them into a single sorted array.
+
+3. **Repeat:**
+   - Continue merging until the entire array is sorted.
+
+---
+
+### **17. Quick Sort**
+
+**Algorithm:**
+
+1. **Partition the Array:**
+   - Choose a pivot element.
+   - Rearrange the array so that elements smaller than the pivot are on the left, and elements greater than the pivot are on the right.
+
+2. **Quick Sort:**
+   - Recursively apply quick sort to the left and right subarrays.
+
+---
+
+### **18. Dijkstra’s Algorithm for Shortest Path**
+
+**Algorithm:**
+
+1. **Initialize:**
+   - Set the distance of the source node to 0 and all other nodes to infinity.
+   - Mark all nodes as unvisited.
+
+2. **Find the Minimum Distance Node:**
+   - Choose the unvisited node with the smallest distance.
+
+3. **Update Neighbors:**
+   - For each neighbor of the current node, calculate the tentative distance and update if it's smaller than the current known distance.
+
+4. **Repeat:**
+   - Continue until all nodes are visited.
+
+---
+
+### **19. Prim’s Algorithm for Minimum Spanning Tree**
+
+**Algorithm:**
+
+1. **Initialize:**
+   - Start with a single node and mark it as visited.
+   - Set the cost of the edges of the visited node.
+
+2. **Add Minimum Edge:**
+   - Choose the minimum-cost edge that connects a visited node to an unvisited node.
+
+3. **Repeat:**
+   - Continue until all nodes are visited and part of the MST.
+
+---
+
+### **20. Kruskal’s Algorithm for Minimum Spanning Tree**
+
+**Algorithm:**
+
+1. **Sort the Edges:**
+   - Sort all edges of the graph by their weights.
+
+2. **Add Minimum Edge:**
+   - Add edges to the MST in increasing order of weight, ensuring no cycles are formed.
+
+3. **Repeat:**
+   - Continue until the MST contains `V-1` edges.
+
+---
+
+### **21. Depth First Search (DFS) on Graph**
+
+**Algorithm:**
+
+1. **Initialize:**
+   - Mark all nodes as unvisited.
+
+2. **Visit Nodes Recursively:**
+   - Starting from a node, visit its unvisited neighbors recursively.
+
+3. **Repeat:**
+   - Continue until all nodes are visited.
+
+---
+
+### **22. Breadth First Search (BFS) on Graph**
+
+**Algorithm:**
+
+1. **Initialize:**
+   - Mark all nodes as unvisited.
+   - Create a queue to track nodes to be visited.
+
+2. **Visit Nodes:**
+   - Start from a node, visit all its neighbors, and add them to the queue.
+   - Continue until the queue is empty.
+
+---
+
+### **23. Insertion Sort**
+
+**Algorithm:**
+
+1. **Start with the Second Element:**
+   - Compare the element with its previous elements.
+
+2. **Shift Elements:**
+   - Shift elements that are greater than the current element to the right.
+
+3. **Insert:**
+   - Insert the element into the correct position.
+
+---
+
+### **24. Selection Sort**
+
+**Algorithm:**
+
+1. **Find the Minimum:**
+   - Find the minimum element in the array and swap it with the first element.
+
+2. **Repeat:**
+   - Repeat the process for the remaining unsorted portion of the array.
+
+I understand now! You're referring to the practical sample questions and algorithms I previously provided from 1 to 25, and you want to continue with the algorithms for the remaining questions (26-30) in that series. I'll continue from where I left off and give you the detailed algorithms for questions 26-30 (Insertion Sort, Quick Sort, etc.).
+
+### **26. Insertion Sort Algorithm**
+
+1. **Start from the Second Element:**
+   - Begin with the second element in the array (index `1`), as the first element is already "sorted."
+
+2. **Select the Key Element:**
+   - The element at the current position is the key. Compare the key with the elements before it.
+
+3. **Shift Elements:**
+   - If the elements before the key are greater, shift them one position to the right to make space for the key.
+
+4. **Insert the Key:**
+   - Insert the key in the correct position in the sorted part of the array.
+
+5. **Repeat:**
+   - Continue the process for all elements until the array is sorted.
+
+
+###25 **Algorithm for Hashing with Multiplication and Linear Probing**
+
+1. **Initialization:**
+   - Create a `HashingMultiplication` class with `hashTable`, `tableSize`, and `collisions`.
+   - Set a constant `A = 0.6180339887` for the multiplication method.
+
+2. **Constructor:**
+   - Initialize the hash table of size `tableSize`, with all slots set to `-1` (empty) and collisions set to `0`.
+
+3. **Hash Function:**
+   - Compute the hash index by multiplying the key by `A`, extracting the fractional part, and multiplying it by `tableSize`. Return the integer part.
+
+4. **Insert Function:**
+   - Calculate the index using the hash function.
+   - If the index is free, insert the key.
+   - If there's a collision, increment `collisions` and resolve using linear probing (check next index until an empty slot is found).
+
+5. **Display Function:**
+   - Print the hash table contents and the number of collisions.
+
+6. **Main Method:**
+   - Get the table size and elements from the user.
+   - Insert each element into the hash table and display the final table along with collision count.
+
+
+26. Insertion Sort Algorithm
+Start from the Second Element:
+
+Begin with the second element in the array (index 1), as the first element is already "sorted."
+Select the Key Element:
+
+The element at the current position is the key. Compare the key with the elements before it.
+Shift Elements:
+
+If the elements before the key are greater, shift them one position to the right to make space for the key.
+Insert the Key:
+
+Insert the key in the correct position in the sorted part of the array.
+Repeat:
+
+Continue the process for all elements until the array is sorted.
+
+
+### **27. Quick Sort Algorithm**
+
+1. **Choose a Pivot:**
+   - Select a pivot element from the array (can be the first element, last element, middle, or random).
+
+2. **Partition the Array:**
+   - Rearrange the array so that all elements smaller than the pivot are on its left, and all elements larger than the pivot are on its right.
+
+3. **Recursively Sort Subarrays:**
+   - Apply the same process to the subarray on the left of the pivot and the subarray on the right.
+
+4. **Base Case:**
+   - Recursion continues until subarrays contain one or zero elements (which are already sorted).
+
+---
+
+### **28. Merge Sort Algorithm**
+
+1. **Divide the Array:**
+   - Split the array into two halves recursively until each subarray contains only one element.
+
+2. **Merge Subarrays:**
+   - Starting with pairs of elements, merge the subarrays by comparing and ordering the elements.
+
+3. **Combine Sorted Subarrays:**
+   - Continue merging subarrays until all subarrays are combined into a fully sorted array.
+
+4. **Base Case:**
+   - If the array has one element, it is already sorted.
+
+---
+
+### **29. Heap Sort Algorithm**
+
+1. **Build a Max Heap:**
+   - Rearrange the array elements to satisfy the max-heap property (parent nodes are larger than child nodes).
+
+2. **Extract Elements:**
+   - Swap the root (largest element) with the last element of the heap, reducing the heap size by one.
+
+3. **Heapify:**
+   - Restore the max-heap property for the reduced heap by rearranging elements (heapify).
+
+4. **Repeat:**
+   - Continue extracting elements and heapifying until the array is sorted.
+
+---
+
+### **30. Bubble Sort Algorithm**
+
+1. **Compare Adjacent Elements:**
+   - Starting from the first element, compare adjacent elements in the array.
+
+2. **Swap if Necessary:**
+   - If the first element is larger than the second, swap them.
+
+3. **Repeat for Remaining Elements:**
+   - Continue comparing and swapping adjacent elements until you reach the end of the array. This places the largest element at the end.
+
+4. **Iterate Until Sorted:**
+   - Repeat the process for the remaining unsorted portion of the array. After each iteration, the next largest element is placed in its correct position.
+
+5. **Finish:**
+   - Continue until no swaps are needed in an entire pass, indicating that the array is sorted.
+
