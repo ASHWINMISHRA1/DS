@@ -24,8 +24,6 @@ void display() {       if (top == -1)
 case 4:     return 0;            default:
                 printf("Invalid choice\n");  }  }  }
 
-algo 
-
 
 
 #Parenthesis Matching using Stacks
